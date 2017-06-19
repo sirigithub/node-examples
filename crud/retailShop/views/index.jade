@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  ul
+        - each product, i in products
+            li
+                = blob.name
+                = blob.badge
+                = blob.dob
+                = blob.isloved
+                = blob._id

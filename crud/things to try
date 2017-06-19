@@ -1,0 +1,13 @@
+1) Finish CRU with product catalog
+2) finalise end points for requests from front end
+3) create rest api for user registration and authentication against db
+4) Find ways to handle routes for restful services for given paths like /women/dresses, /men/kurtas  etc
+
+in routes do the following
+
+localhost:3000/all = all products
+localhost:3000/women = all women's clothes
+localhost:3000/kids = all kids
+
+localhost:3000/women/dresses
+localhost:3000/women/shoes

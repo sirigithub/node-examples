@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+    h1.
+         Welcome
+    ul
+        - each product, i in products
+            li
+                = product.sku
+                = product.type
+                = product.title
+                = product.description

@@ -1,0 +1,45 @@
+router.get('/products/:id', function(req, res,next) {
+    console.log('*** In fetch by sku ' + req.params.id);
+    var productId =req.params.id;
+    //find the ID in the Database
+    mongoose.model('productCatalog').find({'sku':productId}, function (err, product) {
+        //if it isn't found, we are going to repond with 404
+        if (err) {
+            console.log(productId + 'ProductId was not found');
+            res.status(404)
+            var err = new Error('Not Found');
+            err.status = 404;
+            res.format({
+                html: function(){
+                    next(err);
+                 },
+                json: function(){
+                       res.json({message : err.status  + ' ' + err});
+                 }
+            });
+        //if it is found we continue on
+        } else {
+            //uncomment this next line if you want to see every JSON document response for every GET/PUT/DELETE call
+            console.log(product);
+            // once validation is done save the new item in the req
+           // req.id = id;
+            // go to the next thing
+            //next(); 
+                  //respond to both HTML and JSON. JSON responses require 'Accept: application/json;' in the Request Header
+                  res.format({
+                      //HTML response will render the index.jade file in the views/blobs folder. We are also setting "blobs" to be an accessible variable in our jade view
+                    html: function(){
+                        
+                        res.render('products/index', {
+                              title: 'product for sku',
+                              "product" : product
+                          });
+                    },
+                    //JSON response will show all blobs in JSON format
+                    json: function(){
+                        res.json(infophotos);
+                    }
+                });
+        } 
+    });
+});

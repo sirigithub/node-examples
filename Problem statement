@@ -1,0 +1,9 @@
+what will the app do ?
+
+1) authenticate users stored in a mongo db datebase and login to an app.
+2)once user is logged in show all products
+3)Use cookies to show previous selections
+4)Let user navigate menu to different products
+5)show intrest in a product
+
+
